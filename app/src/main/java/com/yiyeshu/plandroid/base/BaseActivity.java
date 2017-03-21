@@ -10,58 +10,52 @@ import android.view.View;
 
 import com.yiyeshu.plandroid.util.ToastUtils;
 
+import butterknife.ButterKnife;
+
 
 /**
- * Created by yiyi on 2016/12/26.
+ * Created by lhw on 2016/12/26.
+ * 基类 activity
  */
 
-public class BaseActivity extends AppCompatActivity implements BaseFuncIml, View.OnClickListener{
+public abstract class BaseActivity extends AppCompatActivity {
 
-    private  final String TAG = getClass().getSimpleName();
-
+    private final String TAG = getClass().getSimpleName();
 
     private int mFragmentId;
-
     protected Fragment mCurrFragment;
-
     private boolean isExit = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        initData();
+        setContentView(getLayoutID());
+        ButterKnife.bind(this);
         initView();
+        initData();
         initListener();
-        initLoad();
     }
 
+    /*
+返回布局文件id
+*/
+    protected abstract int getLayoutID();
 
-    @Override
-    public void initData() { }
+    /*
+       初始化视图控件
+        */
+    protected abstract void initView();
 
-    @Override
-    public void initView() { }
+    /*
+   初始化数据
+    */
+    protected abstract void initData();
 
-    @Override
-    public void initListener() { }
+    /*
+        初始化监听
+         */
+    protected abstract void initListener();
 
-    @Override
-    public void initLoad() { }
-
-    @Override
-    public void onClick(View view) {
-
-    }
 
     public void setFragmentId(int fragmentId) {
         mFragmentId = fragmentId;
@@ -72,7 +66,7 @@ public class BaseActivity extends AppCompatActivity implements BaseFuncIml, View
     }
 
     public void setCurrFragment(Fragment currFragment) {
-       this.mCurrFragment = currFragment;
+        this.mCurrFragment = currFragment;
     }
 
     protected void toFragment(Fragment toFragment) {
@@ -102,10 +96,12 @@ public class BaseActivity extends AppCompatActivity implements BaseFuncIml, View
         }
     }
 
+    //不带参数跳转页面
     protected void openActivity(Class<? extends BaseActivity> toActivity) {
         openActivity(toActivity, null);
     }
 
+    //带参数跳转页面
     protected void openActivity(Class<? extends BaseActivity> toActivity, Bundle parameter) {
         Intent intent = new Intent(this, toActivity);
         if (parameter != null) {
@@ -118,7 +114,7 @@ public class BaseActivity extends AppCompatActivity implements BaseFuncIml, View
         this.isExit = isExit;
     }
 
-    protected  void setToolbar(Toolbar toolbar, String title) {
+    protected void setToolbar(Toolbar toolbar, String title) {
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

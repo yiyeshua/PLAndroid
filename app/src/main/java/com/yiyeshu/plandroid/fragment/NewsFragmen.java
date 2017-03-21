@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.yiyeshu.plandroid.R;
+import com.yiyeshu.plandroid.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsFragmen extends Fragment {
+public class NewsFragmen extends BaseFragment {
 
 
     public NewsFragmen() {

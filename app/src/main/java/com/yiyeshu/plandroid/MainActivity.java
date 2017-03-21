@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ButterKnife.bind(this);
-        // mDrawerToggle=new ActionBarDrawerToggle()
         mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open,
                 R.string.drawer_close);
         mDrawerToggle.syncState();
@@ -53,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
 
         setupDrawerContent(navigationView);
-        //profile Image
         setUpProfileImage();
 
        // switchToBook();
@@ -75,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("TAG", "====: 1111111111111111111111111");
             }
         });
+
+
     }
 
     private void switchToBook() {

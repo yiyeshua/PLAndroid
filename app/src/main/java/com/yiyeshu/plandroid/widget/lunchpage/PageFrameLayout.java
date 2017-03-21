@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.yiyeshu.plandroid.R;
-import com.yiyeshu.plandroid.SplashActivity;
+import com.yiyeshu.plandroid.ui.guide.GuideActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +82,7 @@ public class PageFrameLayout extends FrameLayout implements ViewPager.OnPageChan
         }
 
         setSelectVp(0);
-        SplashActivity activity = (SplashActivity) getContext();
+        GuideActivity activity = (GuideActivity) getContext();
         ViewPager viewPager = new ViewPager(getContext());
         viewPager.setId(R.id.id_page);
         viewPager.setAdapter(new PageFragmentAdapter(activity.getSupportFragmentManager(), fragments));

@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 public class BaseFragment extends Fragment implements BaseFuncIml {
     private View mContentView;
-
     private ViewGroup container;
 
     @Nullable

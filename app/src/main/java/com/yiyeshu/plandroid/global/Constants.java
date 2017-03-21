@@ -2,10 +2,11 @@ package com.yiyeshu.plandroid.global;
 
 /**
  *
- * Created by Administrator on 2016/12/27.
+ * Created by lhw on 2017/3/21.
  */
 
 public class Constants {
+    public static final boolean IS_FIRST_USERED=false;      //是否第一次使用
     public interface Key {
         String THEME_MODE = "theme_mode";
     }
