@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.util;
+package com.yiyeshu.common.utils;
 
 import android.content.Context;
 import android.widget.Toast;

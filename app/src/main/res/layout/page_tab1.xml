@@ -10,6 +10,7 @@
         android:scaleType="centerCrop"
         android:src="@mipmap/w1x" />
     <TextView
+        android:visibility="gone"
         android:id="@+id/id_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

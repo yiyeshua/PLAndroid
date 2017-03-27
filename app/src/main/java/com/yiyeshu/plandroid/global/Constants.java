@@ -6,34 +6,7 @@ package com.yiyeshu.plandroid.global;
  */
 
 public class Constants {
+    public static final String IMG_SPLASH_PATH="https://github.com/yiyeshua/Photos/blob/master/img_splash.png";
     public static final boolean IS_FIRST_USERED=false;      //是否第一次使用
-    public interface Key {
-        String THEME_MODE = "theme_mode";
-    }
 
-    public interface Theme {
-        String DAY_THEME = "day_theme";
-        String NIGHT_THEME = "night_theme";
-    }
-
-    public interface DrawerMenuItemType {
-        int ITEM_DRAWER_MENU_HEADER = 0;
-        int ITEM_DRAWER_MENU_HOME = 1;
-        int ITEM_DRAWER_MENU_CONTENT = 2;
-    }
-
-    public interface FragmentItemType {
-        int ITEM_ATTICLE = 0;
-        int ITEM_THEME_SECTION = 1;
-    }
-
-    public interface StoryType {
-        String STORY_HOME = "home";
-        String STORY_THEME = "theme";
-    }
-
-    public interface WebViewSetting {
-        String SP_NO_IMAGE = "no_image";
-        String SP_AUTO_CACHE = "auto_cache";
-    }
 }

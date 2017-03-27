@@ -34,10 +34,9 @@ import java.io.InputStream;
  * @author Trinea 2012-6-27
  */
 public class ImageUtil {
-
     /**
-     * convert Bitmap to byte array
-     * 
+     * 转化bitmap为字节数组
+     *
      * @param b
      * @return
      */
@@ -52,8 +51,8 @@ public class ImageUtil {
     }
 
     /**
-     * convert byte array to Bitmap
-     * 
+     * 转化字节数组为bitmap
+     *
      * @param b
      * @return
      */
@@ -62,8 +61,8 @@ public class ImageUtil {
     }
 
     /**
-     * convert Drawable to Bitmap
-     * 
+     * 转化图片资源为bitmap
+     *
      * @param d
      * @return
      */
@@ -72,8 +71,8 @@ public class ImageUtil {
     }
 
     /**
-     * convert Bitmap to Drawable
-     * 
+     * 转化bitmap为图片资源
+     *
      * @param b
      * @return
      */
@@ -84,7 +83,7 @@ public class ImageUtil {
 
     /**
      * convert Drawable to byte array
-     * 
+     *
      * @param d
      * @return
      */
@@ -94,7 +93,7 @@ public class ImageUtil {
 
     /**
      * convert byte array to Drawable
-     * 
+     *
      * @param b
      * @return
      */
@@ -104,7 +103,7 @@ public class ImageUtil {
 
     /**
      * scale image
-     * 
+     *
      * @param org
      * @param newWidth
      * @param newHeight
@@ -116,7 +115,7 @@ public class ImageUtil {
 
     /**
      * scale image
-     * 
+     *
      * @param org
      * @param scaleWidth sacle of width
      * @param scaleHeight scale of height
@@ -206,6 +205,7 @@ public class ImageUtil {
         public int width;
         public int height;
     }
+
 }
 
 

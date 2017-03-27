@@ -3,8 +3,7 @@ package com.yiyeshu.common.tools.cache;
 import android.content.Context;
 import android.os.Environment;
 
-import net.oschina.app.util.TDevice;
-import net.oschina.common.utils.StreamUtil;
+import com.yiyeshu.common.utils.TDevice;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,7 +52,11 @@ public class DiskLruCacheUtil {
 
             e.printStackTrace();
         } finally {
-            StreamUtil.close(oos);
+            try {
+                oos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -76,7 +79,11 @@ public class DiskLruCacheUtil {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            StreamUtil.close(ois);
+            try {
+                ois.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }

@@ -40,7 +40,7 @@ public class Env {
         if (sContext != null) {
             return sContext.getPackageName();
         } else {
-            return "com.brian.csdnblog";
+            return "com.yiyeshu.plandroid";
         }
     }
     

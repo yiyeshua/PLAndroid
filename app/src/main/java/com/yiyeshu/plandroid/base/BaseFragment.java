@@ -12,48 +12,45 @@ import android.view.ViewGroup;
  * Created by Administrator on 2016/12/31.
  */
 
-public class BaseFragment extends Fragment implements BaseFuncIml {
+public abstract class BaseFragment extends Fragment{
+    protected BaseActivity mActivity;
     private View mContentView;
     private ViewGroup container;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mActivity = (BaseActivity) getActivity();
         initData();
         initView();
         initListener();
-        initLoad();
         this.container = container;
-        return mContentView;
+        return getContentView();
     }
 
+    protected abstract int getLayoutId();
+
     public View getContentView() {
-        return mContentView;
+        return getActivity().getLayoutInflater().inflate(getLayoutId(), container, false);
     }
 
     public void setContentView(int viewId) {
         this.mContentView = getActivity().getLayoutInflater().inflate(viewId, container, false);
     }
 
-    @Override
     public void initData() {
 
     }
 
-    @Override
     public void initView() {
 
     }
 
-    @Override
     public void initListener() {
 
     }
 
-    @Override
-    public void initLoad() {
 
-    }
 
     protected void openActivity(Class<? extends BaseActivity> toActivity) {
         openActivity(toActivity, null);

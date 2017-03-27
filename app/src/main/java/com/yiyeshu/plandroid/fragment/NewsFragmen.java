@@ -28,4 +28,9 @@ public class NewsFragmen extends BaseFragment {
         return inflater.inflate(R.layout.fragment_news, container, false);
     }
 
+    @Override
+    protected int getLayoutId() {
+        return 0;
+    }
+
 }
