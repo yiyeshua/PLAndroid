@@ -28,7 +28,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.e("TAG", "00");
         super.onCreate(savedInstanceState);
+        Log.e("TAG", "000000000000000000000000000");
         setActivityState(this);
         setContentView(getLayoutID());
         ButterKnife.bind(this);

@@ -19,13 +19,16 @@ public abstract class BaseFrameActivity<P extends BasePresenter, M extends BaseM
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        Log.e("TAG", "0000");
+
+        Log.e("TAG", "11111");
         mPresenter = TUtil.getT(this, 0);
         Log.e("mPresenter", "====: "+mPresenter);
         mModel = TUtil.getT(this, 1);
         if (this instanceof BaseView) {
             mPresenter.attachVM(this, mModel);
         }
+        super.onCreate(savedInstanceState);
     }
 
     /**

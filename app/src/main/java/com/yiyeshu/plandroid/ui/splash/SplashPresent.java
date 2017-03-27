@@ -26,7 +26,7 @@ public class SplashPresent extends SplashContract.Presenter {
 
             @Override
             public void onError(Throwable e) {
-                Log.e("TAG", "====: 网络图片加载出错，加载本地图片");
+                Log.e("TAG", "====: 网络图片加载出错"+e.getMessage().toString());
                 mView.loadSplashImage(ImageUtils.drawableToBitmap(ContextCompat.getDrawable(AppUtils.getAppContext(),R.drawable.img_splash)));
             }
 

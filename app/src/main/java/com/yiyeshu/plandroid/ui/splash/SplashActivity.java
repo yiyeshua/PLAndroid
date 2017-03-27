@@ -2,6 +2,7 @@ package com.yiyeshu.plandroid.ui.splash;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -29,6 +30,7 @@ public class SplashActivity extends BaseFrameActivity<SplashPresent, SplashModel
 
     @Override
     protected void initData() {
+        Log.e("TAG", "1111111111111111111111111111111111");
         mPresenter.getSplashImage();
     }
 
