@@ -9,16 +9,4 @@
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         android:src="@mipmap/w1x" />
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/id_skip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-       android:layout_alignParentRight="true"
-        android:layout_marginTop="45dp"
-        android:background="@drawable/btn_innew"
-        android:text="直接跳过"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
 </RelativeLayout>

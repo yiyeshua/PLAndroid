@@ -2,6 +2,8 @@ package com.yiyeshu.plandroid.widget.lunchpage;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -12,6 +14,7 @@ import android.widget.RelativeLayout;
 
 import com.yiyeshu.plandroid.R;
 import com.yiyeshu.plandroid.ui.guide.GuideActivity;
+import com.yiyeshu.plandroid.ui.guide.PageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +88,7 @@ public class PageFrameLayout extends FrameLayout implements ViewPager.OnPageChan
         GuideActivity activity = (GuideActivity) getContext();
         ViewPager viewPager = new ViewPager(getContext());
         viewPager.setId(R.id.id_page);
-        viewPager.setAdapter(new PageFragmentAdapter(activity.getSupportFragmentManager(), fragments));
+        viewPager.setAdapter(new PageFragmentAdapter(activity.getSupportFragmentManager()));
         viewPager.addOnPageChangeListener(this);
         addView(viewPager);
         addView(dot_ll);
@@ -122,6 +125,24 @@ public class PageFrameLayout extends FrameLayout implements ViewPager.OnPageChan
             } else {
                 iv_vp[i].setImageResource(dot_off);
             }
+        }
+    }
+
+
+    class PageFragmentAdapter extends FragmentPagerAdapter {
+
+        public PageFragmentAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public PageFragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
         }
     }
 }

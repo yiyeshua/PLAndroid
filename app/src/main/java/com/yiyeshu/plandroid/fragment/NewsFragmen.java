@@ -3,9 +3,6 @@ package com.yiyeshu.plandroid.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.yiyeshu.plandroid.R;
 import com.yiyeshu.plandroid.base.BaseFragment;
@@ -20,17 +17,19 @@ public class NewsFragmen extends BaseFragment {
         // Required empty public constructor
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news, container, false);
+    protected int getLayoutId() {
+        return R.layout.fragment_news;
     }
 
     @Override
-    protected int getLayoutId() {
-        return 0;
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+
     }
 
 }

@@ -7,7 +7,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -17,34 +16,49 @@ import android.widget.RelativeLayout;
 
 import com.wakehao.bar.BottomNavigationBar;
 import com.wakehao.bar.BottomNavigationItem;
+import com.yiyeshu.plandroid.base.BaseActivity;
 import com.yiyeshu.plandroid.fragment.BlankFragment;
 import com.yiyeshu.plandroid.fragment.HomeFragment;
 import com.yiyeshu.plandroid.fragment.MeFragment;
 import com.yiyeshu.plandroid.fragment.NewsFragmen;
 
-import butterknife.ButterKnife;
+import butterknife.BindView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     ActionBarDrawerToggle mDrawerToggle;
-    private Toolbar toolbar;
-    private AppBarLayout appbar;
-    private FrameLayout fragmentContainer;
-    private BottomNavigationBar bar;
-    private RelativeLayout frameContent;
-    private CoordinatorLayout mainContent;
-    private NavigationView navigationView;
-    private DrawerLayout drawerLayout;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.appbar)
+    AppBarLayout appbar;
+    @BindView(R.id.fragment_container)
+    FrameLayout fragmentContainer;
+    @BindView(R.id.bar)
+    BottomNavigationBar bar;
+    @BindView(R.id.frame_content)
+    RelativeLayout frameContent;
+    @BindView(R.id.main_content)
+    CoordinatorLayout mainContent;
+    @BindView(R.id.navigation_view)
+    NavigationView navigationView;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
-        setSupportActionBar(toolbar);
+    protected int getLayoutID() {
+        return R.layout.activity_main;
+    }
 
-        ButterKnife.bind(this);
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+       //setSupportActionBar(toolbar);
+        setToolbar(toolbar,"霹雳");
+
+    }
+
+    @Override
+    protected void initData() {
         mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open,
                 R.string.drawer_close);
         mDrawerToggle.syncState();
@@ -53,13 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
         setupDrawerContent(navigationView);
         setUpProfileImage();
-
-       // switchToBook();
-       // https://github.com/WakeHao/BottomNavigationBar
-        initListener();
     }
 
-    private void initListener() {
+    protected void initListener() {
 
         bar.setOnNavigationItemSelectedListener(new BottomNavigationBar.OnNavigationItemSelectedListener() {
             @Override
@@ -148,15 +158,4 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-
-    private void initView() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        appbar = (AppBarLayout) findViewById(R.id.appbar);
-        fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
-        bar = (BottomNavigationBar) findViewById(R.id.bar);
-        frameContent = (RelativeLayout) findViewById(R.id.frame_content);
-        mainContent = (CoordinatorLayout) findViewById(R.id.main_content);
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-    }
 }

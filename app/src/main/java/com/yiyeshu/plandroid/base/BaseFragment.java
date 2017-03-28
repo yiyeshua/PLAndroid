@@ -8,49 +8,46 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by Administrator on 2016/12/31.
  */
 
 public abstract class BaseFragment extends Fragment{
     protected BaseActivity mActivity;
-    private View mContentView;
-    private ViewGroup container;
+    protected View mContentView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mActivity = (BaseActivity) getActivity();
+        init();
+        this.mContentView=getContentView(container);
+        ButterKnife.bind(mContentView);
         initData();
-        initView();
+        initView(savedInstanceState);
         initListener();
-        this.container = container;
-        return getContentView();
+        return mContentView;
+    }
+
+    private void init() {
+        mActivity = (BaseActivity) getActivity();
     }
 
     protected abstract int getLayoutId();
 
-    public View getContentView() {
-        return getActivity().getLayoutInflater().inflate(getLayoutId(), container, false);
+    public View getContentView(ViewGroup container) {
+        return mActivity.getLayoutInflater().inflate(getLayoutId(), container, false);
     }
 
-    public void setContentView(int viewId) {
-        this.mContentView = getActivity().getLayoutInflater().inflate(viewId, container, false);
-    }
 
-    public void initData() {
+    protected abstract void initData();
 
-    }
-
-    public void initView() {
-
-    }
+    protected abstract void initView(Bundle savedInstanceState);
 
     public void initListener() {
 
     }
-
-
 
     protected void openActivity(Class<? extends BaseActivity> toActivity) {
         openActivity(toActivity, null);

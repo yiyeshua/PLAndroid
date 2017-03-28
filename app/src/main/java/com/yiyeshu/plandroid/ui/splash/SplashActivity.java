@@ -2,12 +2,15 @@ package com.yiyeshu.plandroid.ui.splash;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.CountDownTimer;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.yiyeshu.common.utils.AppManager;
 import com.yiyeshu.plandroid.R;
 import com.yiyeshu.plandroid.mvpframe.base.BaseFrameActivity;
+import com.yiyeshu.plandroid.ui.guide.GuideActivity;
 
 import butterknife.BindView;
 
@@ -25,13 +28,34 @@ public class SplashActivity extends BaseFrameActivity<SplashPresent, SplashModel
 
     @Override
     protected void initListener() {
+        btnSplash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivity(GuideActivity.class);
+            }
+        });
+
 
     }
 
     @Override
     protected void initData() {
-        Log.e("TAG", "1111111111111111111111111111111111");
         mPresenter.getSplashImage();
+
+        new CountDownTimer(4000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                btnSplash.setText("跳过 "+(millisUntilFinished / 1000-1) );
+            }
+
+            @Override
+            public void onFinish() {
+                btnSplash.setClickable(true);
+                cancel();
+                openActivity(GuideActivity.class);
+                AppManager.getAppManager().finishActivity(SplashActivity.this);
+            }
+        }.start();
     }
 
     @Override

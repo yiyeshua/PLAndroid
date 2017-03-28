@@ -28,9 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.e("TAG", "00");
         super.onCreate(savedInstanceState);
-        Log.e("TAG", "000000000000000000000000000");
         setActivityState(this);
         setContentView(getLayoutID());
         ButterKnife.bind(this);
@@ -55,33 +53,40 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void setActivityState(Activity activity) {
         activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
-    /*
-返回布局文件id
-*/
+    /**
+    返回布局文件id
+    */
     protected abstract int getLayoutID();
 
-    /*
-       初始化视图控件
-        */
+    /**
+     *初始化视图控件
+     */
     protected abstract void initView(Bundle savedInstanceState);
 
-    /*
-   初始化数据
+    /**
+     * * 初始化数据
     */
     protected abstract void initData();
 
-    /*
-        初始化监听
-         */
+    /**
+     *初始化监听
+     */
     protected abstract void initListener();
-    
 
-    //不带参数跳转页面
+
+    /**
+     * 不带参数跳转页面
+     * @param toActivity
+     */
     protected void openActivity(Class<? extends BaseActivity> toActivity) {
         openActivity(toActivity, null);
     }
 
-    //带参数跳转页面
+    /**
+     * 带参数跳转
+     * @param toActivity
+     * @param parameter
+     */
     protected void openActivity(Class<? extends BaseActivity> toActivity, Bundle parameter) {
         Intent intent = new Intent(this, toActivity);
         if (parameter != null) {
@@ -90,7 +95,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    /**
+     * 设置toolbar
+     * @param toolbar
+     * @param title
+     */
     protected void setToolbar(Toolbar toolbar, String title) {
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
@@ -132,6 +141,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.e(TAG, "onDestroy: ");
-        AppManager.getAppManager().finishActivity();
+       // AppManager.getAppManager().finishActivity();
     }
 }

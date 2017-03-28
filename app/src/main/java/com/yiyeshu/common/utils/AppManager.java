@@ -3,6 +3,7 @@ package com.yiyeshu.common.utils;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.util.Log;
 
 import java.util.Stack;
 
@@ -59,6 +60,7 @@ public class AppManager {
      * 结束指定的Activity
      */
     public void finishActivity(Activity activity) {
+        Log.e("TAG", "====: 关闭activity"+activity);
         if (activity != null) {
             activityStack.remove(activity);
             activity.finish();

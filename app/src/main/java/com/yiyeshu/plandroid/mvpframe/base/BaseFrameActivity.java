@@ -2,7 +2,6 @@ package com.yiyeshu.plandroid.mvpframe.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.yiyeshu.plandroid.base.BaseActivity;
 import com.yiyeshu.plandroid.mvpframe.util.TUtil;
@@ -19,11 +18,7 @@ public abstract class BaseFrameActivity<P extends BasePresenter, M extends BaseM
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.e("TAG", "0000");
-
-        Log.e("TAG", "11111");
         mPresenter = TUtil.getT(this, 0);
-        Log.e("mPresenter", "====: "+mPresenter);
         mModel = TUtil.getT(this, 1);
         if (this instanceof BaseView) {
             mPresenter.attachVM(this, mModel);
