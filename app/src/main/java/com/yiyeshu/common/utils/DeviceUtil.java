@@ -14,7 +14,6 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import com.yiyeshu.common.Env;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -40,7 +39,7 @@ public class DeviceUtil {
         if (!TextUtils.isEmpty(uniqueId)) {
             return uniqueId;
         }
-        final TelephonyManager tm = (TelephonyManager) Env.getContext().getSystemService(Context.TELEPHONY_SERVICE);
+        final TelephonyManager tm = (TelephonyManager) AppUtils.getAppContext().getSystemService(Context.TELEPHONY_SERVICE);
         String deviceId, tmSerial, androidId;
         try {
             deviceId = tm.getDeviceId();
@@ -53,7 +52,7 @@ public class DeviceUtil {
             tmSerial = "";
         }
         try {
-            androidId = "" + Settings.Secure.getString(Env.getContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+            androidId = "" + Settings.Secure.getString(AppUtils.getAppContext().getContentResolver(), Settings.Secure.ANDROID_ID);
         } catch (Exception e) {
             androidId = "";
         }

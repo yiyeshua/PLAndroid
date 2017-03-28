@@ -7,10 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.yiyeshu.common.utils.AppManager;
 import com.yiyeshu.plandroid.R;
+import com.yiyeshu.plandroid.base.BaseActivity;
 import com.yiyeshu.plandroid.mvpframe.base.BaseFrameActivity;
-import com.yiyeshu.plandroid.ui.guide.GuideActivity;
 
 import butterknife.BindView;
 
@@ -25,37 +24,49 @@ public class SplashActivity extends BaseFrameActivity<SplashPresent, SplashModel
     ImageView imgSplash;
     @BindView(R.id.btn_splash)
     Button btnSplash;
+    CountDownTimer countDownTimer = new CountDownTimer(4000, 1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+            btnSplash.setText("跳过 " + (millisUntilFinished / 1000 - 1));
+        }
+
+        @Override
+        public void onFinish() {
+            btnSplash.setClickable(true);
+            mPresenter.jumpTo(countDownTimer);
+        }
+    };
 
     @Override
     protected void initListener() {
         btnSplash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openActivity(GuideActivity.class);
+                mPresenter.jumpTo(countDownTimer);
             }
         });
 
 
     }
+/*
+    *//**
+     * 根据配置文件确认跳转
+     *//*
+    private void jumpTo() {
+        boolean isUsered = (boolean) SpUtils.get(mContext, Constants.IS_FIRST_USERED, false);
+        if(!isUsered){
+            openActivity(GuideActivity.class);
+        }else{
+            openActivity(MainActivity.class);
+        }
+        AppManager.getAppManager().finishActivity(SplashActivity.this);
+        countDownTimer.cancel();
+    }*/
 
     @Override
     protected void initData() {
         mPresenter.getSplashImage();
-
-        new CountDownTimer(4000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                btnSplash.setText("跳过 "+(millisUntilFinished / 1000-1) );
-            }
-
-            @Override
-            public void onFinish() {
-                btnSplash.setClickable(true);
-                cancel();
-                openActivity(GuideActivity.class);
-                AppManager.getAppManager().finishActivity(SplashActivity.this);
-            }
-        }.start();
+        countDownTimer.start();
     }
 
     @Override
@@ -72,5 +83,11 @@ public class SplashActivity extends BaseFrameActivity<SplashPresent, SplashModel
     public void loadSplashImage(Bitmap bitmap) {
         imgSplash.setImageBitmap(bitmap);
     }
+
+    @Override
+    public void startActivity(Class<? extends BaseActivity> toActivity) {
+        openActivity(toActivity);
+    }
+
 
 }

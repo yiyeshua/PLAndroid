@@ -11,7 +11,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 
-import com.yiyeshu.common.Env;
 import com.yiyeshu.common.views.CommonDialogFragment;
 
 import pub.devrel.easypermissions.EasyPermissions;
@@ -102,7 +101,7 @@ public class PermissionUtil {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
-        boolean permissionCamera = ContextCompat.checkSelfPermission(Env.getContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+        boolean permissionCamera = ContextCompat.checkSelfPermission(AppUtils.getAppContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
         if (!permissionCamera) {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, PERMISSION_REQUEST_CODE_CAMERA);
             return false;
@@ -118,7 +117,7 @@ public class PermissionUtil {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
-        boolean permissionAudio = ContextCompat.checkSelfPermission(Env.getContext(), Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED;
+        boolean permissionAudio = ContextCompat.checkSelfPermission(AppUtils.getAppContext(), Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED;
         if (!permissionAudio) {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSION_REQUEST_CODE_AUDIO);
             return false;
@@ -135,8 +134,8 @@ public class PermissionUtil {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
-        boolean permissionCamera = ContextCompat.checkSelfPermission(Env.getContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
-        boolean permissionAudio = ContextCompat.checkSelfPermission(Env.getContext(), Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED;
+        boolean permissionCamera = ContextCompat.checkSelfPermission(AppUtils.getAppContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+        boolean permissionAudio = ContextCompat.checkSelfPermission(AppUtils.getAppContext(), Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED;
         if (!permissionCamera || !permissionAudio) {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO}, PERMISSION_REQUEST_CODE_CAMERA_AND_AUDIO);
             return false;

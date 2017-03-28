@@ -1,12 +1,15 @@
 package com.yiyeshu.plandroid.ui.guide;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.yiyeshu.common.utils.AppManager;
+import com.yiyeshu.common.utils.SpUtils;
 import com.yiyeshu.plandroid.MainActivity;
 import com.yiyeshu.plandroid.R;
 import com.yiyeshu.plandroid.base.BaseFragment;
+import com.yiyeshu.plandroid.global.Constants;
 
 
 /**
@@ -34,7 +37,14 @@ public class PageFragment extends BaseFragment {
             mContentView.findViewById(R.id.id_ok).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   openActivity(MainActivity.class);
+                    boolean isUsered = (boolean) SpUtils.get(mActivity, Constants.IS_FIRST_USERED, false);
+                    Log.e(TAG, "onClick: " + isUsered);
+
+                    if(!isUsered){
+                        Log.e("TAG", "====: 22222222222222222222222");
+                        SpUtils.put(mActivity,Constants.IS_FIRST_USERED,true);
+                    }
+                    openActivity(MainActivity.class);
                     AppManager.getAppManager().finishActivity();
                 }
             });

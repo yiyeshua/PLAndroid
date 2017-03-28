@@ -2,8 +2,6 @@ package com.yiyeshu.common.utils;
 
 import android.content.Context;
 
-import com.yiyeshu.common.Env;
-
 import java.io.File;
 
 /**
@@ -13,7 +11,7 @@ import java.io.File;
 
 public class PathUtil {
     public static String getCacheDirPath() {
-        Context context = Env.getContext();
+        Context context = AppUtils.getAppContext();
 
         // 先尝试选择外部缓存
         File file = context.getExternalCacheDir();

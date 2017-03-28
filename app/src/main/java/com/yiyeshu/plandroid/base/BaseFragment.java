@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BaseFragment extends Fragment{
+    protected  final String TAG = this.getClass().getSimpleName();
     protected BaseActivity mActivity;
     protected View mContentView;
 

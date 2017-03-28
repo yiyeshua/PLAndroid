@@ -3,8 +3,6 @@ package com.yiyeshu.common.utils;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
-import com.yiyeshu.common.Env;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -74,7 +72,7 @@ public class ResourceUtil {
     }
 
     public static String getString(int resid, Object... formatArgs){
-        return Env.getContext().getString(resid, formatArgs);
+        return AppUtils.getAppContext().getString(resid, formatArgs);
     }
 
     public static String getString(Context context, int resId) {
@@ -91,21 +89,21 @@ public class ResourceUtil {
      * @return
      */
     public static final String getString(int resID) {
-        return Env.getContext().getString(resID);
+        return AppUtils.getAppContext().getString(resID);
     }
 
     /**
      * 获取颜色
      */
     public static final int getColor(int resid) {
-        return Env.getContext().getResources().getColor(resid);
+        return AppUtils.getAppContext().getResources().getColor(resid);
     }
 
     /**
      * 获取图片
      */
     public static final Drawable getDrawable(int resid) {
-        return Env.getContext().getResources().getDrawable(resid);
+        return AppUtils.getAppContext().getResources().getDrawable(resid);
     }
 
     /**
@@ -115,7 +113,7 @@ public class ResourceUtil {
      * @return
      */
     public static final int getDimens(int resid) {
-        return (int) Env.getContext().getResources().getDimension(resid);
+        return (int) AppUtils.getAppContext().getResources().getDimension(resid);
     }
 
     /**
@@ -125,7 +123,7 @@ public class ResourceUtil {
      * @return
      */
     public static final String[] getStringArray(int resid) {
-        return Env.getContext().getResources().getStringArray(resid);
+        return AppUtils.getAppContext().getResources().getStringArray(resid);
     }
 
     /**
@@ -135,7 +133,7 @@ public class ResourceUtil {
      * @return
      */
     public static final int getInteger(int resid) {
-        return Env.getContext().getResources().getInteger(resid);
+        return AppUtils.getAppContext().getResources().getInteger(resid);
     }
 
     /**
@@ -145,7 +143,7 @@ public class ResourceUtil {
      * @return
      */
     public static final int getDrawableResId(String name) {
-        return Env.getContext().getResources().getIdentifier(name, "drawable", Env.getContext().getPackageName());
+        return AppUtils.getAppContext().getResources().getIdentifier(name, "drawable", AppUtils.getAppContext().getPackageName());
     }
 
 }

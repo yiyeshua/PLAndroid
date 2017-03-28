@@ -1,7 +1,9 @@
 package com.yiyeshu.plandroid.ui.splash;
 
 import android.graphics.Bitmap;
+import android.os.CountDownTimer;
 
+import com.yiyeshu.plandroid.base.BaseActivity;
 import com.yiyeshu.plandroid.mvpframe.base.BaseModel;
 import com.yiyeshu.plandroid.mvpframe.base.BasePresenter;
 import com.yiyeshu.plandroid.mvpframe.base.BaseView;
@@ -20,10 +22,12 @@ public interface SplashContract {
     //负责加载图片，该方法由实现SplashContract.View接口的activity实现具体逻辑
     interface View extends BaseView {
         void loadSplashImage(Bitmap bitmap);
+        void startActivity(Class<? extends BaseActivity> toActivity);
     }
 
     //Presenter负责获取图片，该方法的逻辑由继承了SplashContract.Presenter类的presenter类实现，
     abstract class Presenter extends BasePresenter<Model, View> {
         abstract void getSplashImage();
+        abstract void jumpTo(CountDownTimer countDownTimer);
     }
 }

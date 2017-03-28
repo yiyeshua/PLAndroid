@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
 
-import com.yiyeshu.common.Env;
+import com.yiyeshu.common.utils.AppUtils;
 import com.yiyeshu.common.utils.LogUtil;
 import com.yiyeshu.plandroid.base.BaseActivity;
 
@@ -96,7 +96,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
                 String filePath = Environment.getExternalStorageDirectory()
                         .getAbsolutePath()
                         + File.separator
-                        + Env.getPackageName()
+                        + AppUtils.getPackageName()
                         + File.separator + "crash" + File.separator;
                 File dir = new File(filePath);
                 if (!dir.exists()) {

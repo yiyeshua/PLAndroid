@@ -9,8 +9,6 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.yiyeshu.common.Env;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,7 +100,7 @@ public class MarketUtils {
                 intent.setPackage(marketPkg);
             }
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            Env.getContext().startActivity(intent);
+            AppUtils.getAppContext().startActivity(intent);
         } catch (Exception e) {
             e.printStackTrace();
         }
