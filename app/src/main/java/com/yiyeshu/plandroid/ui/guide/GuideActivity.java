@@ -5,7 +5,6 @@ import android.view.WindowManager;
 
 import com.yiyeshu.plandroid.R;
 import com.yiyeshu.plandroid.base.BaseActivity;
-import com.yiyeshu.plandroid.widget.lunchpage.PageFrameLayout;
 
 import butterknife.BindView;
 

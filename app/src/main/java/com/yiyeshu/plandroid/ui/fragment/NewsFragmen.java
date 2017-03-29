@@ -1,8 +1,9 @@
-package com.yiyeshu.plandroid.fragment;
+package com.yiyeshu.plandroid.ui.fragment;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.View;
 
 import com.yiyeshu.plandroid.R;
 import com.yiyeshu.plandroid.base.BaseFragment;
@@ -28,7 +29,7 @@ public class NewsFragmen extends BaseFragment {
     }
 
     @Override
-    protected void initView(Bundle savedInstanceState) {
+    protected void initView(View contentView, Bundle savedInstanceState) {
 
     }
 

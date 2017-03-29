@@ -17,10 +17,10 @@ import android.widget.RelativeLayout;
 import com.wakehao.bar.BottomNavigationBar;
 import com.wakehao.bar.BottomNavigationItem;
 import com.yiyeshu.plandroid.base.BaseActivity;
-import com.yiyeshu.plandroid.fragment.BlankFragment;
-import com.yiyeshu.plandroid.fragment.HomeFragment;
-import com.yiyeshu.plandroid.fragment.MeFragment;
-import com.yiyeshu.plandroid.fragment.NewsFragmen;
+import com.yiyeshu.plandroid.ui.fragment.BlankFragment;
+import com.yiyeshu.plandroid.ui.fragment.HomeFragment;
+import com.yiyeshu.plandroid.ui.fragment.MeFragment;
+import com.yiyeshu.plandroid.ui.fragment.NewsFragmen;
 
 import butterknife.BindView;
 
@@ -74,7 +74,6 @@ public class MainActivity extends BaseActivity {
         bar.setOnNavigationItemSelectedListener(new BottomNavigationBar.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull BottomNavigationItem item, int selectedPosition) {
-
                 return true;
             }
 

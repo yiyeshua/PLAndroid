@@ -19,21 +19,25 @@ public abstract class BaseFragment extends Fragment{
     protected BaseActivity mActivity;
     protected View mContentView;
 
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mActivity = (BaseActivity) getActivity();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        init();
         this.mContentView=getContentView(container);
         ButterKnife.bind(mContentView);
         initData();
-        initView(savedInstanceState);
+        initView(mContentView,savedInstanceState);
         initListener();
         return mContentView;
     }
 
-    private void init() {
-        mActivity = (BaseActivity) getActivity();
-    }
+
 
     protected abstract int getLayoutId();
 
@@ -44,7 +48,7 @@ public abstract class BaseFragment extends Fragment{
 
     protected abstract void initData();
 
-    protected abstract void initView(Bundle savedInstanceState);
+    protected abstract void initView(View contentView, Bundle savedInstanceState);
 
     public void initListener() {
 

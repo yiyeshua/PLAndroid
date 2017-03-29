@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.widget.lunchpage;
+package com.yiyeshu.plandroid.ui.guide;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,18 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.yiyeshu.plandroid.R;
-import com.yiyeshu.plandroid.ui.guide.GuideActivity;
-import com.yiyeshu.plandroid.ui.guide.PageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * author：luck
- * project：AppWhenThePage
- * package：com.luck.app.page.when_page
- * email：893855882@qq.com
- * data：2017/2/22
+ * 引导页
+ * date：2017/2/22
  */
 public class PageFrameLayout extends FrameLayout implements ViewPager.OnPageChangeListener {
     private List<PageFragment> fragments = new ArrayList<>();

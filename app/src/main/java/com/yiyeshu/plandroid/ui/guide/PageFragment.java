@@ -1,7 +1,6 @@
 package com.yiyeshu.plandroid.ui.guide;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.yiyeshu.common.utils.AppManager;
@@ -31,17 +30,14 @@ public class PageFragment extends BaseFragment {
     }
 
     @Override
-    public void initView(Bundle savedInstanceState) {
+    public void initView(View contentView, Bundle savedInstanceState) {
         // 滑动到最后一页有点击事件
         if (index == count - 1) {
             mContentView.findViewById(R.id.id_ok).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     boolean isUsered = (boolean) SpUtils.get(mActivity, Constants.IS_FIRST_USERED, false);
-                    Log.e(TAG, "onClick: " + isUsered);
-
                     if(!isUsered){
-                        Log.e("TAG", "====: 22222222222222222222222");
                         SpUtils.put(mActivity,Constants.IS_FIRST_USERED,true);
                     }
                     openActivity(MainActivity.class);

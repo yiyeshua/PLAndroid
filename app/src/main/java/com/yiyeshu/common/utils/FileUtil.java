@@ -968,4 +968,25 @@ public class FileUtil {
         File file = new File(path);
         return file.isDirectory();
     }
+
+    /**
+     * 获取缓存路径
+     * @return
+     */
+    public static String getCacheDirPath() {
+        // 先尝试选择外部缓存
+        File file = AppUtils.getAppContext().getExternalCacheDir();
+        if (file != null) {
+            String extCacheDir = file.getAbsolutePath();
+            FileUtil.ensureFolderExists(extCacheDir);
+            if (FileUtil.isDirExist(extCacheDir)) {
+                return extCacheDir;
+            }
+        }
+
+        // 暂尝试选择内部缓存
+        String intcacheDir = AppUtils.getAppContext().getCacheDir().getAbsolutePath();
+        FileUtil.ensureFolderExists(intcacheDir);
+        return intcacheDir;
+    }
 }

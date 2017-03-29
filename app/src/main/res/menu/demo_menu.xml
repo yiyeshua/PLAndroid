@@ -3,21 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/test_1"
-        fragment="com.yiyeshu.plandroid.fragment.HomeFragment"
+        fragment="com.yiyeshu.plandroid.ui.fragment.HomeFragment"
         icon2="@mipmap/home_selected"
         android:icon="@mipmap/home_normal"
         android:title="@string/home"
         tools:ignore="MissingPrefix"></item>
     <item
         android:id="@+id/test_2"
-        fragment="com.yiyeshu.plandroid.fragment.NewsFragmen"
+        fragment="com.yiyeshu.plandroid.ui.fragment.NewsFragmen"
         icon2="@mipmap/category_selected"
         android:icon="@mipmap/category_normal"
         android:title="新闻"
         tools:ignore="MissingPrefix"></item>
     <item
         android:id="@+id/test_3"
-        fragment="com.yiyeshu.plandroid.fragment.BlankFragment"
+        fragment="com.yiyeshu.plandroid.ui.fragment.BlankFragment"
         icon2="@mipmap/service_selected"
         android:icon="@mipmap/service_normal"
         android:title="发现"
@@ -26,7 +26,7 @@
 
     <item
         android:id="@+id/test_4"
-        fragment="com.yiyeshu.plandroid.fragment.MeFragment"
+        fragment="com.yiyeshu.plandroid.ui.fragment.MeFragment"
         icon2="@mipmap/mine_selected"
         android:icon="@mipmap/mine_normal"
         android:title="我"
