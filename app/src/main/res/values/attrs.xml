@@ -27,4 +27,16 @@
         <attr name="noEmpty" format="boolean"/>
         <attr name="isEnable" format="boolean"/>
     </declare-styleable>
+
+    <!--增强版编辑框-->
+    <declare-styleable name="EditTextPlus">
+        <attr name="button_img_normal" format="reference"/>
+        <attr name="button_img_pressed" format="reference"/>
+        <attr name="button_img_checked" format="reference"/>
+        <attr name="etp_type" format="enum">
+            <enum name="normal" value="0"/>
+            <enum name="clickable" value="1"/>
+            <enum name="checkable" value="2"/>
+        </attr>
+    </declare-styleable>
 </resources>

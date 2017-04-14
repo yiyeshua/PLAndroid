@@ -48,20 +48,6 @@ public class SplashActivity extends BaseFrameActivity<SplashPresent, SplashModel
 
 
     }
-/*
-    *//**
-     * 根据配置文件确认跳转
-     *//*
-    private void jumpTo() {
-        boolean isUsered = (boolean) SpUtils.get(mContext, Constants.IS_FIRST_USERED, false);
-        if(!isUsered){
-            openActivity(GuideActivity.class);
-        }else{
-            openActivity(MainActivity.class);
-        }
-        AppManager.getAppManager().finishActivity(SplashActivity.this);
-        countDownTimer.cancel();
-    }*/
 
     @Override
     protected void initData() {
