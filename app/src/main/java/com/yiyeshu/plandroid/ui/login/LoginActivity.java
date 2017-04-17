@@ -2,9 +2,10 @@ package com.yiyeshu.plandroid.ui.login;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,16 @@ import android.widget.TextView;
 import com.yiyeshu.common.utils.ToastUtils;
 import com.yiyeshu.common.views.EditTextPlus;
 import com.yiyeshu.plandroid.R;
+import com.yiyeshu.plandroid.bean.User;
 import com.yiyeshu.plandroid.mvpframe.base.BaseFrameActivity;
 import com.yiyeshu.plandroid.ui.register.RegisterActivity;
 
+import java.util.List;
+
 import butterknife.BindView;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> implements LoginContract.View, View.OnClickListener {
 
@@ -48,7 +55,6 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
     private int keyHeight = 0; //软件盘弹起后所占高度
     private float scale = 0.6f; //logo缩放比例
     private View service;
-    private int height = 0 ;
 
     @Override
     protected int getLayoutID() {
@@ -61,7 +67,6 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
         service = findViewById(R.id.service);
         screenHeight = this.getResources().getDisplayMetrics().heightPixels; //获取屏幕高度
         keyHeight = screenHeight / 3;//弹起高度为屏幕高度的1/3
-
     }
 
     @Override
@@ -93,7 +98,6 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
               /* old是改变前的左上右下坐标点值，没有old的是改变后的左上右下坐标点值
               现在认为只要控件将Activity向上推的高度超过了1/3屏幕高，就认为软键盘弹起*/
                 if (oldBottom != 0 && bottom != 0 && (oldBottom - bottom > keyHeight)) {
-                    Log.e("wenzhihao", "up------>"+(oldBottom - bottom));
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -103,7 +107,6 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
                     zoomIn(mLogo, (oldBottom - bottom) - keyHeight);
                     service.setVisibility(View.INVISIBLE);
                 } else if (oldBottom != 0 && bottom != 0 && (bottom - oldBottom > keyHeight)) {
-                    Log.e("wenzhihao", "down------>"+(bottom - oldBottom));
                     //键盘收回后，logo恢复原来大小，位置同样回到初始位置
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -116,6 +119,64 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
                 }
             }
         });
+    }
+
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_login :
+                login();
+                break;
+            case R.id.regist:
+                openActivity(RegisterActivity.class);
+                break;
+            case R.id.forget_password:
+                ToastUtils.showToast(this,"联系管理员");
+                break;
+        }
+    }
+
+    private void login() {
+        //0、验证用户名和密码格式
+        String username=mEtMobile.getText().toString();
+        String password = mEtPassword.getText().toString();
+        if(TextUtils.isEmpty(username) || TextUtils.isEmpty(password)){
+            ToastUtils.showToast(this,"用户名或密码不能为空");
+            return;
+        }
+        if (!password.matches("[A-Za-z0-9]+")) {
+            ToastUtils.showToast(this,"请使用字母和数字组合作为密码");
+            mEtPassword.setText("");
+        }
+        //1、显示登录加载对话框
+        showDialog();
+        //2、另开线程检查用户名和密码
+        User user=new User();
+        user.setName(username);
+        user.setPassword(password);
+
+
+        BmobQuery<User> bmobQuery = new BmobQuery<>();
+
+
+        bmobQuery.findObjects(new FindListener<User>() {
+            @Override
+            public void done(List<User> list, BmobException e) {
+
+            }
+        });
+
+        //3、如果有则关闭对话框，跳转主页，保存token或者登录标记，没有则弹出提示，用户名或密码错误
+        
+    }
+
+    private void showDialog() {
+        ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage("正在登录");
+        progressDialog.show();
     }
 
 
@@ -157,29 +218,4 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
         mAnimatorSet.start();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_login :
-                login();
-                break;
-            case R.id.regist:
-                openActivity(RegisterActivity.class);
-                break;
-            case R.id.forget_password:
-                ToastUtils.showToast(this,"联系管理员");
-                break;
-        }
-    }
-
-    private void login() {
-        String s = mEtPassword.getText().toString();
-        if (s.isEmpty())
-            return;
-        if (!s.matches("[A-Za-z0-9]+")) {
-            String temp = s;
-            ToastUtils.showToast(this,"请使用字母和数字组合作为密码");
-            mEtPassword.setText("");
-        }
-    }
 }
