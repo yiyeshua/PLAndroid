@@ -159,7 +159,7 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
 
 
         BmobQuery<User> bmobQuery = new BmobQuery<>();
-
+        
 
         bmobQuery.findObjects(new FindListener<User>() {
             @Override
@@ -168,7 +168,7 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
             }
         });
 
-        //3、如果有则关闭对话框，跳转主页，保存token或者登录标记，没有则弹出提示，用户名或密码错误
+        //3、 如果有则关闭对话框，跳转主页，保存token或者登录标记，没有则弹出提示，用户名或密码错误
         
     }
 
@@ -177,6 +177,7 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setMessage("正在登录");
         progressDialog.show();
+
     }
 
 
