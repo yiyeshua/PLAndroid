@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.ui.splash;
+package com.yiyeshu.plandroid.module.splash;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

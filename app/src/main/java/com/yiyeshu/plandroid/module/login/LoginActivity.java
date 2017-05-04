@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.ui.login;
+package com.yiyeshu.plandroid.module.login;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -21,7 +21,7 @@ import com.yiyeshu.common.views.EditTextPlus;
 import com.yiyeshu.plandroid.R;
 import com.yiyeshu.plandroid.bean.User;
 import com.yiyeshu.plandroid.mvpframe.base.BaseFrameActivity;
-import com.yiyeshu.plandroid.ui.register.RegisterActivity;
+import com.yiyeshu.plandroid.module.register.RegisterActivity;
 
 import java.util.List;
 
@@ -200,7 +200,7 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
     }
 
     /**
-     * f放大
+     * 放大
      * @param view
      */
     public void zoomOut(final View view, float dist) {

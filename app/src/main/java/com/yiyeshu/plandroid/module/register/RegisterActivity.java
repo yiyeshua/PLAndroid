@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.ui.register;
+package com.yiyeshu.plandroid.module.register;
 
 import android.os.Bundle;
 

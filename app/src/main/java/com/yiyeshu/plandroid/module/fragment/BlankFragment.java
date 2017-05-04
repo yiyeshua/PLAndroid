@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.ui.fragment;
+package com.yiyeshu.plandroid.module.fragment;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.yiyeshu.plandroid.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MeFragment extends Fragment {
+public class BlankFragment extends Fragment {
 
 
-    public MeFragment() {
+    public BlankFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class MeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_me, container, false);
+        return inflater.inflate(R.layout.fragment_blank, container, false);
     }
 
 }

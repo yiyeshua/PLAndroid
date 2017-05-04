@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.ui.splash;
+package com.yiyeshu.plandroid.module.splash;
 
 import android.graphics.Bitmap;
 import android.os.CountDownTimer;
@@ -12,7 +12,7 @@ import com.yiyeshu.common.utils.SpUtils;
 import com.yiyeshu.plandroid.MainActivity;
 import com.yiyeshu.plandroid.R;
 import com.yiyeshu.plandroid.global.Constants;
-import com.yiyeshu.plandroid.ui.guide.GuideActivity;
+import com.yiyeshu.plandroid.module.guide.GuideActivity;
 
 import rx.Subscriber;
 

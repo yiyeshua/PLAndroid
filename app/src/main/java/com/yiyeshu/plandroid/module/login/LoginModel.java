@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.ui.login;
+package com.yiyeshu.plandroid.module.login;
 
 /**
  * Created by lhw on 2017/4/14.

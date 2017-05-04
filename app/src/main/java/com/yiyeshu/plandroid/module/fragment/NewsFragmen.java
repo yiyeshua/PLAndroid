@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.ui.fragment;
+package com.yiyeshu.plandroid.module.fragment;
 
 
 import android.os.Bundle;

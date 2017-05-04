@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.ui.login;
+package com.yiyeshu.plandroid.module.register;
 
 import com.yiyeshu.plandroid.mvpframe.base.BaseModel;
 import com.yiyeshu.plandroid.mvpframe.base.BasePresenter;
@@ -7,7 +7,7 @@ import com.yiyeshu.plandroid.mvpframe.base.BaseView;
 /**
  * Created by lhw on 2017/4/14.
  */
-public interface LoginContract {
+public interface RegisterContract {
     //负责获取图片，不管从何处获取。数据库or网络or内存卡
     interface Model extends BaseModel {
     }

@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.ui.login;
+package com.yiyeshu.plandroid.module.login;
 
 import android.app.Activity;
 import android.graphics.Rect;

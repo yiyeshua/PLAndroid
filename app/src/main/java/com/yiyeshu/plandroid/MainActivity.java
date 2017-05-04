@@ -17,10 +17,10 @@ import android.widget.RelativeLayout;
 import com.wakehao.bar.BottomNavigationBar;
 import com.wakehao.bar.BottomNavigationItem;
 import com.yiyeshu.plandroid.base.BaseActivity;
-import com.yiyeshu.plandroid.ui.fragment.BlankFragment;
-import com.yiyeshu.plandroid.ui.fragment.HomeFragment;
-import com.yiyeshu.plandroid.ui.fragment.MeFragment;
-import com.yiyeshu.plandroid.ui.fragment.NewsFragmen;
+import com.yiyeshu.plandroid.module.fragment.BlankFragment;
+import com.yiyeshu.plandroid.module.fragment.HomeFragment;
+import com.yiyeshu.plandroid.module.fragment.MeFragment;
+import com.yiyeshu.plandroid.module.fragment.NewsFragmen;
 
 import butterknife.BindView;
 

@@ -1,4 +1,4 @@
-package com.yiyeshu.plandroid.ui.guide;
+package com.yiyeshu.plandroid.module.guide;
 
 import android.os.Bundle;
 import android.view.View;
