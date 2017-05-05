@@ -1,5 +1,6 @@
 package com.yiyeshu.plandroid.bean;
 
+
 import cn.bmob.v3.BmobObject;
 
 /**

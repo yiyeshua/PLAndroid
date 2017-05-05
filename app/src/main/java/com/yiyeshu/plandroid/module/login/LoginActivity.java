@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +16,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yiyeshu.common.utils.ToastUtils;
 import com.yiyeshu.common.views.EditTextPlus;
+import com.yiyeshu.plandroid.MainActivity;
 import com.yiyeshu.plandroid.R;
 import com.yiyeshu.plandroid.bean.User;
-import com.yiyeshu.plandroid.mvpframe.base.BaseFrameActivity;
 import com.yiyeshu.plandroid.module.register.RegisterActivity;
+import com.yiyeshu.plandroid.mvpframe.base.BaseFrameActivity;
 
 import java.util.List;
 
@@ -55,6 +58,7 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
     private int keyHeight = 0; //软件盘弹起后所占高度
     private float scale = 0.6f; //logo缩放比例
     private View service;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected int getLayoutID() {
@@ -146,10 +150,10 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
             ToastUtils.showToast(this,"用户名或密码不能为空");
             return;
         }
-        if (!password.matches("[A-Za-z0-9]+")) {
+  /*      if (!password.matches("[A-Za-z0-9]+")) {
             ToastUtils.showToast(this,"请使用字母和数字组合作为密码");
             mEtPassword.setText("");
-        }
+        }*/
         //1、显示登录加载对话框
         showDialog();
         //2、另开线程检查用户名和密码
@@ -158,25 +162,57 @@ public class LoginActivity extends BaseFrameActivity<LoginPresent, LoginModel> i
         user.setPassword(password);
 
 
-        BmobQuery<User> bmobQuery = new BmobQuery<>();
-        
-
-        bmobQuery.findObjects(new FindListener<User>() {
+        BmobQuery<User> query = new BmobQuery<User>();
+        query.addWhereEqualTo("name",username);
+        query.addWhereEqualTo("password",password);
+        query.findObjects(new FindListener<User>() {
             @Override
             public void done(List<User> list, BmobException e) {
+                //3、 如果有则关闭对话框，跳转主页，保存token或者登录标记，没有则弹出提示，用户名或密码错误
 
+                if(list!=null && list.size()>0){
+                    Log.e("bmob","查询成功："+list.toString());
+                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                    openActivity(MainActivity.class);
+                }else{
+                    Log.e("bmob","失败："+e.getMessage()+","+e.getErrorCode());
+                    Toast.makeText(LoginActivity.this, "登录失败，未查询到该用户，请先注册", Toast.LENGTH_SHORT).show();
+                    openActivity(RegisterActivity.class);
+                }
+                mProgressDialog.dismiss();
             }
         });
 
-        //3、 如果有则关闭对话框，跳转主页，保存token或者登录标记，没有则弹出提示，用户名或密码错误
+     /*   BmobQuery bmobQuery = new BmobQuery("User");
+        bmobQuery.findObjectsByTable(new QueryListener<JSONArray>() {
+            @Override
+            public void done(JSONArray jsonArray, BmobException e) {
+                //3、 如果有则关闭对话框，跳转主页，保存token或者登录标记，没有则弹出提示，用户名或密码错误
+                if(e==null){
+                    Log.e("bmob","查询成功："+jsonArray.toString());
+                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+
+                    openActivity(MainActivity.class);
+                }else{
+                    Log.e("bmob","失败："+e.getMessage()+","+e.getErrorCode());
+                    Toast.makeText(LoginActivity.this, "登录失败，未查询到该用户，请先注册", Toast.LENGTH_SHORT).show();
+                    openActivity(RegisterActivity.class);
+                }
+                mProgressDialog.dismiss();
+            }
+        });*/
+
+
+
+
         
     }
 
     private void showDialog() {
-        ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setMessage("正在登录");
-        progressDialog.show();
+        mProgressDialog = new ProgressDialog(LoginActivity.this);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.setMessage("正在登录");
+        mProgressDialog.show();
 
     }
 
